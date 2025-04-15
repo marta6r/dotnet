@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\dotnet\\Практика КПиЯП\\P1\\Task3\\Task3.csproj": {}
+    "D:\\dotnet\\Практика КПиЯП\\dotnet\\PrA\\Task3\\Task3.csproj": {}
   },
   "projects": {
-    "D:\\dotnet\\Практика КПиЯП\\P1\\Task3\\Task3.csproj": {
+    "D:\\dotnet\\Практика КПиЯП\\dotnet\\PrA\\Task3\\Task3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\dotnet\\Практика КПиЯП\\P1\\Task3\\Task3.csproj",
+        "projectUniqueName": "D:\\dotnet\\Практика КПиЯП\\dotnet\\PrA\\Task3\\Task3.csproj",
         "projectName": "Task3",
-        "projectPath": "D:\\dotnet\\Практика КПиЯП\\P1\\Task3\\Task3.csproj",
+        "projectPath": "D:\\dotnet\\Практика КПиЯП\\dotnet\\PrA\\Task3\\Task3.csproj",
         "packagesPath": "C:\\Users\\mradi\\.nuget\\packages\\",
-        "outputPath": "D:\\dotnet\\Практика КПиЯП\\P1\\Task3\\obj\\",
+        "outputPath": "D:\\dotnet\\Практика КПиЯП\\dotnet\\PrA\\Task3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mradi\\AppData\\Roaming\\NuGet\\NuGet.Config"
