@@ -1,0 +1,14 @@
+﻿<Window x:Class="XMLParking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Автостоянка" Height="350" Width="525">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Button Content="Загрузить XML" Click="LoadXml"/>
+                <ListBox Name="CarList"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+
