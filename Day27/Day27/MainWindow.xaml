@@ -1,0 +1,42 @@
+﻿<Window x:Class="XmlTaskWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="XmlTaskWPF" Height="400" Width="600">
+    <Grid>
+        <StackPanel>
+            <!-- Expander с функциональностью -->
+            <Expander Header="Функциональность" Width="300">
+                <StackPanel>
+                    <TextBlock Text="Найти"/>
+                    <TextBox Name="FindTextBox"/>
+                    <Button Content="Найти" Name="FindButton" Click="FindButton_Click"/>
+
+                    <TextBlock Text="Удаление"/>
+                    <TextBox Name="DeleteTextBox"/>
+                    <Button Content="Удалить" Name="DeleteButton" Click="DeleteButton_Click"/>
+                </StackPanel>
+            </Expander>
+
+            <!-- Выбор способа отображения списка -->
+            <TextBlock Text="Способ отображения списка:" FontWeight="Bold" Margin="5"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Name="TextBlockOption" Content="TextBox" IsChecked="True" Checked="RadioButton_Checked"/>
+                <RadioButton Name="TreeViewOption" Content="TreeView" Checked="RadioButton_Checked"/>
+                <RadioButton Name="ListBoxOption" Content="ListBox" Checked="RadioButton_Checked"/>
+            </StackPanel>
+
+            <!-- Expander со списком элементов -->
+            <Expander Header="Список элементов" Width="300">
+                <StackPanel>
+                    <TextBox Name="ListTextBox" Visibility="Visible" IsReadOnly="True"/>
+                    <TreeView Name="ListTreeView" Visibility="Collapsed"/>
+                    <ListBox Name="ListListBox" Visibility="Collapsed"/>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+
+
