@@ -1,43 +1,46 @@
-using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
-namespace Day30
+namespace Day31
 {
-
     public partial class Form1 : Form
     {
+        private string connectionString = "Server=localhost;Database=bdtur_firm;Uid=root;Pwd=;";
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void LoadData()
+        private void Form1_Load(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;user=root;password=;database=bdtur_firm;";
-            string query = "SELECT * FROM tourists;";
+            DeleteTour(4);
+            LoadData(); // Загружаем данные при запуске формы
 
-            DataTable dt = new DataTable();
+        }
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+        public void LoadData()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        dt.Load(reader);
-                    }
+                    connection.Open();
+                    string query = "SELECT * FROM tour";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
-                    return;
+                    MessageBox.Show("Ошибка: " + ex.Message);
                 }
             }
-
-            dataGridView1.DataSource = dt;
         }
 
         private void DeleteTour(int tourId)
@@ -67,12 +70,11 @@ namespace Day30
             }
         }
 
-
-        public void AddTourist(string surname, string name, string middle_name)
+        public void AddTourist(int id_tourist, string surname, string name, string middle_name)
         {
             string connectionString = "server=localhost;user=root;password=;database=bdtur_firm;";
 
-            string query = "INSERT INTO tourists (surname, name, middle_name) VALUES (@surname, @name, @middle_name)";
+            string query = "INSERT INTO tourists (id_tourist, surname, name, middle_name) VALUES (@id_tourist, @surname, @name, @middle_name)";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -81,6 +83,7 @@ namespace Day30
                     conn.Open();
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id_tourist", id_tourist);
                     cmd.Parameters.AddWithValue("@surname", surname);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@middle_name", middle_name);
@@ -98,6 +101,7 @@ namespace Day30
                 }
             }
         }
+
 
         public void UpdateTourist(int id_tourist, string surname, string name, string middle_name)
         {
@@ -131,13 +135,8 @@ namespace Day30
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadData(); // Загружаем данные при загрузке формы
-            DeleteTour(1);
-            AddTourist("Radivanovskaya2", "Marta2", "Victorovna2");
-            UpdateTourist(1, "Radivanovskaya1", "Marta1", "Victorovna1");
-        }
+
 
     }
 }
+
